@@ -1,0 +1,25 @@
+{
+  "name": "sport-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sippaprut/sports-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sippaprut/sports-backend/issues"
+  },
+  "homepage": "https://github.com/sippaprut/sports-backend#readme",
+  "dependencies": {
+    "@nestjs/common": "^5.0.0",
+    "@nestjs/core": "^5.0.0",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.2.0"
+  }
+}
