@@ -36,3 +36,12 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Run Mongo DB
+Go to <mongodb-install-directory>/bin directory
+For MAC
+# Run this command
+./mongod --dbpath [path mongodb]
+
+For Windows
+mongod --dbpath [path mongodb]
+
