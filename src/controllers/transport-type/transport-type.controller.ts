@@ -1,6 +1,6 @@
 import { Controller, Get, Request, Res, Post, Body, HttpStatus } from '@nestjs/common';
 import { TransportTypeCreateDto } from '../../dtos/src/transport-type-dto/transport-type-dto';
-import { TransportTypeService } from '../../src/transport-type.service';
+import { TransportTypeService } from './../../services/transport-type.service';
 
 @Controller('transport-type')
 export class TransportTypeController {
@@ -16,9 +16,13 @@ export class TransportTypeController {
 
     @Post()
     create(@Body() data: TransportTypeCreateDto, @Res() res){
-        this.trasportService.create(data).then((res) => {
-
+        this.trasportService.create(data).then((_id) => {
+            res.status(HttpStatus.CREATED).send(_id);
+        }, ({message}) => {
+            res.status(HttpStatus.BAD_REQUEST).send({
+                status: false,
+                message,
+            });
         });
-        res.status(HttpStatus.CREATED).send(data);
     }
 }

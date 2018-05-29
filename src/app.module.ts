@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppService } from './app.service';
 import { TransportTypeController } from './controllers/transport-type/transport-type.controller';
 import { TransportTypeSchema } from './models/transportType.schema';
-import { TransportTypeService } from 'services/transport-type.service';
+import { TransportTypeService } from './services/transport-type.service';
 
 @Module({
   imports: [
