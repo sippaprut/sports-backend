@@ -11,10 +11,10 @@ import { TransportTypeService } from './services/transport-type.service';
     MongooseModule.forRoot('mongodb://localhost:27017/sport-dev'),
     MongooseModule.forFeature([{
       name: 'TransportType',
-      schema: TransportTypeSchema,
-    }]),
+      schema: TransportTypeSchema
+    }])
   ],
   controllers: [AppController, TransportTypeController],
-  providers: [AppService, TransportTypeService],
+  providers: [AppService, TransportTypeService]
 })
 export class AppModule {}

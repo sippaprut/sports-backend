@@ -1,5 +1,6 @@
 {
   "defaultSeverity": "error",
+  "jsdoc-format": true,
   "extends": [
     "tslint:recommended"
   ],
@@ -12,7 +13,7 @@
       true,
       "single"
     ],
-    "indent": false,
+    "indent": [true, "spaces"],
     "member-access": [
       false
     ],
@@ -21,7 +22,7 @@
     ],
     "max-line-length": [
       true,
-      150
+      200
     ],
     "member-ordering": [
       false
@@ -47,9 +48,19 @@
     "one-line": [
       false
     ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
     "one-variable-per-declaration": [
       false
     ]
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "whitespace": [
+    true
+  ]
 }
