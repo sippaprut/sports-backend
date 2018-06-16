@@ -5,16 +5,25 @@ import { AppService } from './app.service';
 import { TransportTypeController } from './controllers/transport-type/transport-type.controller';
 import { TransportTypeSchema } from './models/transportType.schema';
 import { TransportTypeService } from './services/transport-type.service';
+import { MemberController } from './controllers/member/member.controller';
+import { MemberService } from './services/member.service';
+import { memberSchema } from 'models/member.schema';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/sport-dev'),
-    MongooseModule.forFeature([{
-      name: 'TransportType',
-      schema: TransportTypeSchema
-    }])
+    MongooseModule.forFeature([
+      {
+        name: 'TransportType',
+        schema: TransportTypeSchema
+      },
+      {
+        name: 'Member',
+        schema: memberSchema
+      }
+    ])
   ],
-  controllers: [AppController, TransportTypeController],
-  providers: [AppService, TransportTypeService]
+  controllers: [AppController, TransportTypeController, MemberController],
+  providers: [AppService, TransportTypeService, MemberService]
 })
 export class AppModule {}
