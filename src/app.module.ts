@@ -8,7 +8,8 @@ import { TransportTypeService } from './services/transport-type.service';
 import { MemberController } from './controllers/member/member.controller';
 import { MemberService } from './services/member.service';
 import { memberSchema } from 'models/member.schema';
-
+import { AuthService } from './services/auth.service';
+import { JwtStrategy } from './jwt.strategy';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/sport-dev'),
@@ -24,6 +25,12 @@ import { memberSchema } from 'models/member.schema';
     ])
   ],
   controllers: [AppController, TransportTypeController, MemberController],
-  providers: [AppService, TransportTypeService, MemberService]
+  providers: [
+    AppService,
+    TransportTypeService,
+    MemberService,
+    AuthService,
+    JwtStrategy
+  ]
 })
 export class AppModule {}

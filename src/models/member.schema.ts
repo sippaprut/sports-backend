@@ -1,11 +1,9 @@
 import * as mongoose from 'mongoose';
-import isEmail from 'validator/lib/isEmail';
-import bcrypt from 'bcrypt-nodejs';
+import * as isEmail from 'validator/lib/isEmail';
+import * as bcrypt from 'bcrypt-nodejs';
+import * as jwt from 'jsonwebtoken';
 
-function validateEmail(email) {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-}
+const SECRETMESSAGE = 'Sport-Member';
 
 export let memberSchema = new mongoose.Schema({
   username: {
@@ -27,7 +25,7 @@ export let memberSchema = new mongoose.Schema({
     required: true,
     unique: true,
     validate: {
-      validator: v => validateEmail(v),
+      validator: v => isEmail(v),
       message: '{VALUE} is not a valid email'
     }
   },
@@ -40,7 +38,7 @@ export let memberSchema = new mongoose.Schema({
     next();
   }
   bcrypt.genSalt(10, (err, salt) => {
-    this.hash(member.password, salt, (error, hash) => {
+    bcrypt.hash(member.password, salt, null, (e, hash) => {
       member.password = hash;
       next();
     });
